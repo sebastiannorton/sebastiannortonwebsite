@@ -35,13 +35,7 @@ export function Shadow({ className }: ShadowProps) {
     // Start the animation
     animateRandomPoints();
 
-    // Cleanup function
-    return () => {
-      // Stop any ongoing animations
-      if (svgRef.current) {
-        animate.remove(svgRef.current);
-      }
-    };
+    return () => {};
   }, []);
 
   // A function to generate random points on #path-2 on each iteration
