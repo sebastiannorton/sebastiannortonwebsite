@@ -1,0 +1,147 @@
+@import "tailwindcss";
+
+/* Override dark variant to use .dark class (for next-themes compatibility) */
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme inline {
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --font-marcellus: var(--font-marcellus);
+  --color-destructive-foreground: var(--destructive-foreground);
+}
+
+:root {
+  --background: oklch(1 0 0);
+  --foreground: oklch(0 0 0);
+  --card: oklch(0.97 0 0);
+  --card-foreground: oklch(0 0 0);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0 0 0);
+  --primary: oklch(0.75 0 0);
+  --primary-foreground: oklch(0 0 0);
+  --secondary: oklch(0.9 0 0);
+  --secondary-foreground: oklch(0 0 0);
+  --muted: oklch(0.9 0 0);
+  --muted-foreground: oklch(0.5 0 0);
+  --accent: oklch(0.63 0.18 55);
+  --accent-foreground: oklch(1 0 0);
+  --destructive: oklch(0.6 0.25 15);
+  --destructive-foreground: oklch(1 0 0);
+  --border: oklch(0.85 0 0);
+  --input: oklch(0.85 0 0);
+  --ring: oklch(0 0 0);
+  --radius: 0.5rem;
+  --chart-1: oklch(0.63 0.18 55);
+  --chart-2: oklch(0.7 0.1 140);
+  --chart-3: oklch(0.6 0.1 200);
+  --chart-4: oklch(0.65 0.15 280);
+  --chart-5: oklch(0.75 0.15 330);
+  --sidebar: oklch(0.98 0 0);
+  --sidebar-foreground: oklch(0 0 0);
+  --sidebar-primary: oklch(0.63 0.18 55);
+  --sidebar-primary-foreground: oklch(1 0 0);
+  --sidebar-accent: oklch(0.95 0 0);
+  --sidebar-accent-foreground: oklch(0 0 0);
+  --sidebar-border: oklch(0.85 0 0);
+  --sidebar-ring: oklch(0.63 0.18 55);
+  --font-geist-sans: "Geist Sans", sans-serif;
+  --font-geist-mono: "Geist Mono", monospace;
+  --font-marcellus: "Marcellus", serif;
+  --principles-text-color: #000000; /* Default black */
+}
+
+.dark {
+  --background: oklch(0.15 0 0);
+  --foreground: oklch(1 0 0);
+  --card: oklch(0.2 0 0);
+  --card-foreground: oklch(1 0 0);
+  --popover: oklch(0.15 0 0);
+  --popover-foreground: oklch(1 0 0);
+  --primary: oklch(0.9 0 0);
+  --primary-foreground: oklch(0 0 0);
+  --secondary: oklch(0.25 0 0);
+  --secondary-foreground: oklch(1 0 0);
+  --muted: oklch(0.25 0 0);
+  --muted-foreground: oklch(0.7 0 0);
+  --accent: oklch(0.88 0.2 80);
+  --accent-foreground: oklch(0 0 0);
+  --destructive: oklch(0.6 0.25 15);
+  --destructive-foreground: oklch(1 0 0);
+  --border: oklch(0.3 0 0);
+  --input: oklch(0.3 0 0);
+  --ring: oklch(1 0 0);
+  --chart-1: oklch(0.88 0.2 80);
+  --chart-2: oklch(0.7 0.1 140);
+  --chart-3: oklch(0.6 0.1 200);
+  --chart-4: oklch(0.65 0.15 280);
+  --chart-5: oklch(0.75 0.15 330);
+  --sidebar: oklch(0.2 0 0);
+  --sidebar-foreground: oklch(1 0 0);
+  --sidebar-primary: oklch(0.88 0.2 80);
+  --sidebar-primary-foreground: oklch(0 0 0);
+  --sidebar-accent: oklch(0.3 0 0);
+  --sidebar-accent-foreground: oklch(1 0 0);
+  --sidebar-border: oklch(0.3 0 0);
+  --sidebar-ring: oklch(0.88 0.2 80);
+  --principles-text-color: #ffffff; /* White in dark mode */
+}
+
+/* ── Typography: Marcellus for headings & nav ── */
+h1, h2, h3,
+nav a, nav button,
+.nav-link {
+  font-family: var(--font-marcellus);
+}
+
+/* ── Fluid type scale ── */
+h1 {
+  font-size: clamp(2.25rem, 5vw, 4.5rem);      /* 36px → 72px */
+  line-height: 1.1;
+}
+
+h2 {
+  font-size: clamp(1.75rem, 3.5vw, 3rem);      /* 28px → 48px */
+  line-height: 1.2;
+}
+
+h3 {
+  font-size: clamp(1.25rem, 2.5vw, 1.875rem);  /* 20px → 30px */
+  line-height: 1.3;
+}
+
+/* ── Global focus-visible ring for all interactive elements ── */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+  border-radius: var(--radius);
+}
+
+/* ── Consistent border radius override ── */
+/* Ensure buttons, inputs, cards use the theme radius consistently */
+button,
+input,
+textarea,
+select,
+.rounded-card {
+  border-radius: var(--radius);
+}
+
+/* ── Line-length utility for body text ── */
+.prose-measure {
+  max-width: 65ch;
+}
+
+/* ── Remove default textarea resize (use client control) ── */
+textarea {
+  resize: vertical;
+}
+
+/* ── Override for heading sizes in specific contexts ── */
+/* Hero h1 needs to be extra large */
+#hero h1 {
+  font-size: clamp(2.5rem, 6vw, 5rem);
+}
